@@ -1,0 +1,55 @@
+{
+  "name": "universal-monorepo",
+  "version": "0.0.1",
+  "private": true,
+  "workspaces": {
+    "packages": [
+      "app/*",
+      "modules/*"
+    ],
+    "nohoist": [
+      "**/react",
+      "**/react-dom",
+      "**/react-native",
+      "**/react-native/**",
+      "**/react-native-codegen",
+      "**/react-native-dev-menu",
+      "**/react-native-macos",
+      "**/react-native-windows"
+    ]
+  },
+  "scripts": {
+    "reset": "find . -type dir -name node_modules | xargs rm -rf && rm -rf yarn.lock",
+    "android:metro": "yarn workspace @app/mobile start",
+    "android:start": "yarn workspace @app/mobile android",
+    "android:studio": "yarn workspace @app/mobile studio",
+    "ios:metro": "yarn workspace @app/mobile start",
+    "ios:start": "yarn workspace @app/mobile ios",
+    "ios:xcode": "yarn workspace @app/mobile xcode",
+    "ios:pods": "yarn workspace @app/mobile pods",
+    "macos:metro": "yarn workspace @app/macos start",
+    "macos:start": "yarn workspace @app/macos macos",
+    "macos:xcode": "yarn workspace @app/macos xcode",
+    "macos:pods": "yarn workspace @app/macos pods",
+    "web:start": "yarn workspace @app/web start",
+    "web:build": "yarn workspace @app/web build",
+    "electron:start": "yarn workspace @app/electron start",
+    "browser-ext:start": "yarn workspace @app/browser-ext start",
+    "browser-ext:build": "yarn workspace @app/browser-ext build",
+    "lint": "ultra -r lint",
+    "lint:fix": "ultra -r lint:fix",
+    "test": "ultra -r test",
+    "typecheck": "ultra -r typecheck"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.10.1",
+    "@typescript-eslint/parser": "^5.10.1",
+    "eslint": "^8.7.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-react-app": "^6.2.2",
+    "eslint-plugin-react-native": "^4.0.0",
+    "prettier": "^2.5.1",
+    "typescript": "^4.5.5",
+    "ultra-runner": "^3.10.5"
+  }
+}
